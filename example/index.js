@@ -1,11 +1,16 @@
 import Vue from '../src/index'
 
-let vue = new Vue({
-  data() {
-    return {
-      name: 'cks'
-    }
-  }
-})
+// let a = {
+//   data: {
+//     name: 'cks'
+//   },
+//   render() {
+//     alert(this.name)
+//   }
+// }
 
-vue.data.name = '11'
+// let vue = new Vue(a)
+//vue.name
+//vue.name = 'ck'
+
+

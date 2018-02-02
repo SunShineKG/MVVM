@@ -1,13 +1,16 @@
 import { getType } from './utils'
 import initData from './initData'
 
-const init = options => {
+export const init = Vue => {
 
-  let data = getType(options.data) === 'function'
-              ? (options.data)()
-              : options.data || {}
-
-  initData(data)
+  Vue.prototype._init = function(options) {
+ 
+    let data = getType(options.data) === 'function'
+                ? (options.data)()
+                : options.data || {},
+        self = this
+  
+    self._data = data
+    initData(self)
+  }
 }
-
-export default init
