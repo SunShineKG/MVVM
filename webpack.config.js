@@ -40,6 +40,6 @@ plugins: [
   new webpack.HotModuleReplacementPlugin(),
 
   //指定自动开启服务的浏览器
-  new OpenBrowserPlugin({ url: 'http://localhost:'+port+'',browser: 'chrome' })
+  new OpenBrowserPlugin({ url: 'http://localhost:'+port+'' })
 ]
 }

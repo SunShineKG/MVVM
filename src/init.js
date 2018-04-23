@@ -1,5 +1,6 @@
 import { getType } from './utils'
 import initData from './initData'
+import Watcher from './watcher'
 
 export const init = Vue => {
 
@@ -12,5 +13,6 @@ export const init = Vue => {
   
     self._data = data
     initData(self)
+    // new Watcher()
   }
 }

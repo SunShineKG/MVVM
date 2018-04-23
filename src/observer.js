@@ -1,42 +1,34 @@
-import { isEmptyObject } from './utils'
+import { isEmptyObject, getType } from './utils'
 import Dep from './dep'
 
 
-const observer = (obj) => {
+export default function observe(obj) {
 
   if (isEmptyObject(obj)) {
     return
   }
 
+  const dep = new Dep()
   Object.keys(obj).forEach(key => {
     let val = obj[key]
-    const dep = new Dep()    
 
     Object.defineProperty(obj, key, {
       enumerable: true,
       configurable: true,
       get: function() {
-        if (Dep.target) {
-          dep.depend();
-        }
-
+        dep.addSub(Dep.target);
         return val;
       },
       set: function(newVal) {
-        if (val === newVal || (newVal !== newVal && val !== val)) {
+        if (val === newVal) {
           return;
         }
-        val = newVal;
-        // 监听子属性
-        childOb = observe(newVal);
         // 通知数据变更
         dep.notify();
+        val = newVal
       }
     })
+    if (getType(val) === 'object') return observe(val)
   })
 
 }
-
-
-
-export default observer

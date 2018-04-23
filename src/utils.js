@@ -3,7 +3,7 @@
 export function getType(obj) {
 
   return typeof obj === 'object'
-          ? toString.call(obj)
+          ? toString.call(obj).substring(1, 7)
           : typeof obj
 }
 

@@ -1,5 +1,6 @@
 import observer from './observer'
 
+// this指向
 const proxy = (self, data) => {
 
     Object.keys(data).forEach(key => {
@@ -19,6 +20,5 @@ const proxy = (self, data) => {
 
 export default function initData(self) {
   proxy(self, self._data)
-
   observer(self._data)
 }
