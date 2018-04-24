@@ -8,16 +8,18 @@ export default function observe(obj) {
     return
   }
 
-  const dep = new Dep()
+  
   Object.keys(obj).forEach(key => {
+    const dep = new Dep()
     let val = obj[key]
-
     Object.defineProperty(obj, key, {
       enumerable: true,
       configurable: true,
       get: function() {
-        dep.addSub(Dep.target);
-        return val;
+        if (Dep.target) {
+          dep.addSub(Dep.target);
+        }
+        return val
       },
       set: function(newVal) {
         if (val === newVal) {

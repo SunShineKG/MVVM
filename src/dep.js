@@ -4,6 +4,7 @@ class Dep {
   }
 
   addSub (sub) {
+    if (this.subs.includes(sub)) return
     this.subs.push(sub)
   }
 

@@ -1,7 +1,7 @@
 import Vue from '../src/index'
-
-let daa = {ss: 'ss'}
+let daa = { ss: 'ss' }
 let vue = new Vue({
+  el: 'app',
   data() {
     return {
       a: 1,
@@ -14,9 +14,8 @@ let vue = new Vue({
   }
 })
 
-console.log(vue.dd)
+console.log(vue.b.age)
+console.log(vue.a)
 
-vue.dd = daa
-console.log(vue.dd)
-// vue.data.b.name = 'new name'
+vue.b.age = 4
 
